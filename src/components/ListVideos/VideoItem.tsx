@@ -9,9 +9,7 @@ interface VideoItemProps {
 const VideoItem: React.FC<VideoItemProps> = ({ index, video }) => {
     return (
         <div
-            className={classNames('h-12 flex justify-between items-center px-3 rounded-lg', {
-                'bg-primary': index % 2 === 0
-            })}
+            className={classNames('h-auto flex justify-between items-center px-3 rounded-lg my-5')}
         >
             <div className="flex items-center">
                 <img src={video.thumbnailUrl} alt={video.title} />

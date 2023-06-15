@@ -1,12 +1,12 @@
 import { useEffect } from 'react';
 import { Outlet } from 'react-router-dom';
+import { toast } from 'react-toastify';
 import { useAppDispatch, useAppSelector } from '../../../hooks';
-import { resetToastContent, setNewVideo } from '../../../redux/slices/videos/videosSlice';
 import { getUserDetailAction, setSocket } from '../../../redux/slices/user/userSlice';
+import { IYouTubeVideo } from '../../../redux/slices/videos/type';
+import { resetToastContent, setNewVideo } from '../../../redux/slices/videos/videosSlice';
 import socketIo from '../../../socket';
 import { Header } from '../Header';
-import { IYouTubeVideo } from '../../../redux/slices/videos/type';
-import { toast } from 'react-toastify';
 import NewVideoToast from '../toasts/NewVideoToast';
 
 const MainLayout: React.FC = () => {
@@ -47,7 +47,7 @@ const MainLayout: React.FC = () => {
     }, [dispatch, token]);
 
     return (
-        <div className="bg-secondary h-screen w-full flex flex-col">
+        <div className="bg-secondary h-auto w-full flex flex-col">
             <Header />
             <div className=" px-40 flex-1 flex flex-col">
                 <Outlet />

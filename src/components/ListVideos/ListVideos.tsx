@@ -1,10 +1,10 @@
 import React from 'react';
 import InfiniteScroll from 'react-infinite-scroll-component';
-import ClipLoader from 'react-spinners/ClipLoader';
+import { ClipLoader } from 'react-spinners';
 import { useAppDispatch, useAppSelector } from '../../hooks';
+import { IYouTubeVideo } from '../../redux/slices/videos/type';
 import { loadMoreVideosAction } from '../../redux/slices/videos/videosSlice';
 import VideoItem from './VideoItem';
-import { IYouTubeVideo } from '../../redux/slices/videos/type';
 
 const mockVideos: IYouTubeVideo[] = [
     {
@@ -55,24 +55,24 @@ const ListVideos: React.FC = () => {
     const listVideos: IYouTubeVideo[] = mockVideos;
 
     return (
-        <div className="h-[30rem] overflow-auto flex flex-col" id="scrollDiv">
-            <div className="px-3 flex top-0 py-3 items-center sticky bg-secondary">
+        <div className="h-[100rem] overflow-auto flex flex-col" id="scrollDiv">
+            <div className="px-3 flex top-0 py-3 items-center sticky ">
                 <div className="flex-[5] text-left text-[15px] font-semibold">Shared Videos</div>
             </div>
-            <div className="flex-1 h-full">
+            <div className="flex-1 h-auto">
                 {isLoading && (
-                    <div className="flex justify-center items-center h-full ">
+                    <div className=" ">
                         <ClipLoader />
                     </div>
                 )}
 
                 {isError && (
-                    <div className="flex justify-center items-center h-full ">
+                    <div className="flex justify-center items-center h-auto ">
                         <p className="text-center">{message ?? 'Fetch error!'}</p>
                     </div>
                 )}
                 {listVideos.length === 0 && !isLoading && !isError ? (
-                    <div className=" flex justify-center items-center h-full">There's no videos at the moment</div>
+                    <div className=" flex justify-center items-center h-auto">There's no videos at the moment</div>
                 ) : (
                     <InfiniteScroll
                         scrollableTarget={'scrollDiv'}
