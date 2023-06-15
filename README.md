@@ -16,7 +16,7 @@ yarn install
 
 ### Run it
 
-First, Run server 
+First, Run the server 
 
 After having started the server successfully, run this script:
 
