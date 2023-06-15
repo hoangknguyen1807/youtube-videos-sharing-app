@@ -11,12 +11,12 @@ import NewVideoToast from '../toasts/NewVideoToast';
 
 const MainLayout: React.FC = () => {
     const dispatch = useAppDispatch();
-    const { socket } = useAppSelector((state) => state.user);
+    const { user, socket } = useAppSelector((state) => state.user);
     const { toastContent } = useAppSelector((state) => state.videos);
 
-    if (toastContent) {
-      toast(<NewVideoToast {...toastContent}/>);
-      dispatch(resetToastContent());
+    if (toastContent && toastContent.userEmail !== user?.email) {
+        toast(<NewVideoToast {...toastContent} />);
+        dispatch(resetToastContent());
     }
 
     //Socket start

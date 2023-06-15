@@ -33,28 +33,33 @@ const Header: React.FC = () => {
             </Link>
             <div className=" flex items-center">
                 <p className="mr-4">
-                    Welcome <span className="font-semibold text-text cursor-pointer hover:underline"
-                                onClick={() => navigate('/my-videos')}>
-                                {!!user ? user.email : 'Guest'}
-                            </span>
+                    Welcome{' '}
+                    <span
+                        className="font-semibold text-text cursor-pointer hover:underline"
+                        onClick={() => navigate('/my-videos')}
+                    >
+                        {!!user ? user.email : 'Guest'}
+                    </span>
                 </p>
                 <div>
-                    {!!user ?
+                    {!!user ? (
                         menus.map((menu) => (
-                            <button key={menu.name}
+                            <button
+                                key={menu.name}
                                 onClick={() => menu.handle()}
                                 className="px-8 border py-1 rounded-md mr-3 bg-submit text-secondary"
                             >
                                 {menu.name}
                             </button>
-                        )) :
-                        <button 
+                        ))
+                    ) : (
+                        <button
                             onClick={() => navigate('/authentication/signin')}
                             className="px-8 border py-1 rounded-md mr-3 bg-submit text-secondary"
                         >
                             Sign in
                         </button>
-                    }
+                    )}
                 </div>
             </div>
         </header>

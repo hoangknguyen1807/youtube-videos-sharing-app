@@ -17,7 +17,6 @@ export interface IYouTubeVideosSliceState {
     perPage: number;
     count?: number;
     selected?: IYouTubeVideo;
-    bidLoading: boolean;
     isLoading: boolean;
     isError: boolean;
     isSuccess: boolean;
@@ -28,11 +27,6 @@ export interface IYouTubeVideosSliceState {
 
 export interface IShareVideoForm {
     url: string;
-}
-
-export interface BidForm {
-    id: string;
-    bidPrice: number;
 }
 
 export interface IShareVideoError {

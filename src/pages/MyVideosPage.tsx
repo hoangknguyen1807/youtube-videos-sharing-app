@@ -4,15 +4,12 @@ import { ListVideos } from '../components/ListVideos';
 import { useAppDispatch, useAppSelector } from '../hooks';
 import { fetchMyVideosAction } from '../redux/slices/videos/videosSlice';
 
-
 const MyVideosPage: React.FC = () => {
     const dispatch = useAppDispatch();
     const navigate = useNavigate();
     const { isSuccess } = useAppSelector((state) => state.videos);
     const { user } = useAppSelector((state) => state.user);
 
-    console.log({user});
-    
     useEffect(() => {
         if (!user) {
             navigate('/authentication/signin');

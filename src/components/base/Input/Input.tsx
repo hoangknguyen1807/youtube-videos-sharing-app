@@ -21,7 +21,7 @@ const Input = React.forwardRef<Ref, InputProps>((props, ref) => {
                         'border-red-500': props.error
                     })}
                     {...props}
-                    type={props.type ||'text'}
+                    type={props.type || 'text'}
                 />
             </div>
         </div>
@@ -29,4 +29,3 @@ const Input = React.forwardRef<Ref, InputProps>((props, ref) => {
 });
 
 export { Input };
-
