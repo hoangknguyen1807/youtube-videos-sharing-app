@@ -25,7 +25,7 @@ export const getUserDetailAction = createAsyncThunk<User, string>('user/me', asy
 export const signinAction = createAsyncThunk<any, AuthForm>('user/login', async (data, { dispatch }) => {
     const token = await loginAPI(data.email, data.password);
     dispatch(getUserDetailAction(token));
-    return;
+    return token;
 });
 
 export const logoutAction = createAsyncThunk('user/logout', async () => {
@@ -56,7 +56,8 @@ const userSlice = createSlice({
         });
         builder.addCase(signinAction.fulfilled, (state, { payload }) => {
             toast.success('Login successfully');
-            state.isSuccess=true
+            localStorage.setItem('token', payload ?? '');
+            state.isSuccess = true;
         });
         builder.addCase(signinAction.rejected, (state, { error }) => {
             state.isLoading = false;
@@ -74,7 +75,6 @@ const userSlice = createSlice({
         //Get user details
         builder.addCase(getUserDetailAction.fulfilled, (state, { payload }) => {
             state.user = payload;
-            localStorage.setItem('token', payload.token ?? '');
             state.isLoading = false;
         });
 
