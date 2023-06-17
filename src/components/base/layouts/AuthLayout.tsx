@@ -4,9 +4,9 @@ import { useAppSelector } from '../../../hooks';
 
 const AuthLayout: React.FC = () => {
     const { user } = useAppSelector((state) => state.user);
-
     const token = localStorage.getItem('token');
-    if (user || token) {
+
+    if (user && token) {
         return <Navigate to="/" />;
     }
     return (
